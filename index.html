@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laboratorio de Derivadas</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["\\(", "\\)"]],
+        displayMath: [["\\[", "\\]"]]
+      },
+      svg: {
+        fontCache: "global"
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Cálculo diferencial</p>
+      <h1>Laboratorio de Derivadas</h1>
+      <p>
+        Web app didáctica para practicar derivadas, regla de la cadena,
+        derivación implícita, funciones trigonométricas inversas y análisis de pendientes.
+      </p>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="card work-area">
+      <div class="toolbar">
+        <label for="exerciseSelect">Ejercicio</label>
+        <select id="exerciseSelect"></select>
+
+        <button id="downloadBtn" type="button">Guardar gráfica PNG</button>
+      </div>
+
+      <section class="formula-panel">
+        <p class="section-label">Función original</p>
+        <div id="formulaOriginal" class="math-box"></div>
+
+        <p class="section-label">Derivada final</p>
+        <div id="formulaDerivative" class="math-box result"></div>
+      </section>
+
+      <section class="step-panel">
+        <div class="panel-title">
+          <h2>Procedimiento paso a paso</h2>
+          <button id="toggleStepsBtn" type="button">Ocultar pasos</button>
+        </div>
+        <ol id="stepsList"></ol>
+      </section>
+
+      <section class="evaluation-panel">
+        <h2>Evaluar pendiente</h2>
+        <p id="evaluationHelp">
+          Ingresa un valor para evaluar la derivada y observar la pendiente en ese punto.
+        </p>
+
+        <div class="input-row" id="explicitInputs">
+          <label>
+            Valor de x
+            <input id="xValue" type="number" step="0.1" value="1" />
+          </label>
+        </div>
+
+        <div class="input-row hidden" id="implicitInputs">
+          <label>
+            Valor de x
+            <input id="implicitXValue" type="number" step="0.1" value="1" />
+          </label>
+          <label>
+            Valor de y
+            <input id="implicitYValue" type="number" step="0.1" value="2" />
+          </label>
+        </div>
+
+        <button id="evaluateBtn" type="button">Evaluar pendiente</button>
+        <div id="evaluationResult" class="evaluation-result"></div>
+      </section>
+
+      <canvas id="graphCanvas" width="950" height="580" aria-label="Gráfica de función y derivada"></canvas>
+    </section>
+
+    <aside class="card side-panel">
+      <h2 id="exerciseTitle">Ejercicio</h2>
+      <p id="exerciseDescription"></p>
+
+      <div class="info-block">
+        <h3>Conceptos trabajados</h3>
+        <ul id="conceptList"></ul>
+      </div>
+
+      <div class="info-block">
+        <h3>Notas</h3>
+        <p id="exerciseNotes"></p>
+      </div>
+
+      <div class="info-block">
+        <h3>Leyenda</h3>
+        <p><span class="legend-line function"></span> Función original</p>
+        <p><span class="legend-line derivative"></span> Derivada</p>
+        <p><span class="legend-dot"></span> Punto evaluado</p>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <p>Proyecto de portafolio desarrollado con HTML, CSS, JavaScript, Canvas y MathJax.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
